@@ -61,34 +61,22 @@ class MessageHandler(BaseHTTPRequestHandler):
     def do_POST(self):
 
      length = int(self.headers.get('Content-length', 0))
-
      memory = self.rfile.read(length).decode()
-
      data =parse_qs(memory)
-
      name = data['name'][0]
-
-   
-
      self.wfile.write(memory.encode())
-
         
     def do_GET(self):
         self.send_response(200)
-
         # Then send headers.
         self.send_header('Content-type', 'text/html; charset=utf-8')
         self.end_headers()
-
         # Now, write the response body.
         self.wfile.write(form.encode())
 
 
 
 if __name__ == '__main__':
-
     server_address = ('', 8001)
-
     httpd = HTTPServer(server_address, MessageHandler)
-
     httpd.serve_forever()
