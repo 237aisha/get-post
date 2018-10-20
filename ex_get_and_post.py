@@ -68,7 +68,7 @@ class MessageHandler(BaseHTTPRequestHandler):
 
      name = data['name'][0]
 
-     #print(name)
+   
 
      self.wfile.write(memory.encode())
 
